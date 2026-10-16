@@ -45,6 +45,9 @@ RUN pnpm build && pnpm check:export
 FROM nginxinc/nginx-unprivileged:stable-alpine AS runner
 
 # This image already runs as a non-root user, which is why it listens on 8080 and not 80.
+# The base image logs at notice level, which prints a dozen startup lines per deploy. The
+# non-root user owns nginx.conf in this image, so the edit needs no root.
+RUN sed -i 's/^error_log\(.*\) notice;$/error_log\1 warn;/' /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 # Runtime settings, read when the container starts: change them in the panel and restart, no
