@@ -43,9 +43,13 @@ export const THEME_COLOR = '#1a1915'
 /** Where people manage their own Mettrics account and data. */
 export const ACCOUNT_URL = 'https://account.mettrics.com.br'
 
+/** Sister site for security policy and vulnerability disclosure. It links back here. */
+export const SECURITY_URL = 'https://ciberseguranca.mettrics.com.br'
+
 /** Header navigation. Adding a page here does not affect the sitemap — that one discovers routes. */
 export const NAV: ReadonlyArray<{ href: string; label: string }> = [
   { href: ACCOUNT_URL, label: 'Seus dados' },
+  { href: SECURITY_URL, label: 'Segurança' },
 ]
 
 /**
